@@ -1,34 +1,68 @@
 {
   "name": "codemind",
   "version": "0.1.0",
-  "description": "Redis-powered MCP server for permanent codebase memory",
+  "description": "Redis-powered MCP server for permanent codebase memory. Index once, query forever—across unlimited sessions.",
   "type": "module",
   "main": "src/index.js",
   "bin": {
+    "codemind": "src/cli/interactive.js",
+    "codemind-index": "src/cli/index-codebase.js",
+    "codemind-query": "src/cli/query.js",
     "codemind-mcp": "src/mcp/server.js"
   },
   "scripts": {
+    "start": "node src/cli/interactive.js",
     "index": "node src/cli/index-codebase.js",
     "query": "node src/cli/query.js",
+    "stats": "node src/cli/stats-dashboard.js",
     "mcp": "node src/mcp/server.js",
     "dev": "node --watch src/index.js",
-    "test": "node src/cli/index-codebase.js ../mcp-test"
+    "test": "node src/cli/index-codebase.js ../test-project"
   },
-  "keywords": ["mcp", "redis", "code-indexing", "ai-tools"],
-  "author": "Rohan",
+  "keywords": [
+    "mcp",
+    "redis",
+    "code-indexing",
+    "ai-tools",
+    "model-context-protocol",
+    "code-analysis",
+    "call-graph",
+    "ast-parser",
+    "cursor",
+    "claude"
+  ],
+  "author": "Rohan Sawai <sawairohan90@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sawairohan90/codemind"
+  },
+  "bugs": {
+    "url": "https://github.com/sawairohan90/codemind/issues"
+  },
+  "homepage": "https://github.com/sawairohan90/codemind#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {
     "@babel/parser": "^7.26.2",
     "@babel/traverse": "^7.26.2",
+    "@inquirer/prompts": "^7.9.0",
     "@modelcontextprotocol/sdk": "^1.0.4",
-    "dotenv": "^16.4.7",
-    "ioredis": "^5.4.2",
-    "pino": "^9.5.0",
-    "pino-pretty": "^13.0.0",
-    "glob": "^11.0.0",
-    "ora": "^8.1.1",
     "chalk": "^5.3.0",
-    "commander": "^12.1.0"
+    "commander": "^12.1.0",
+    "dotenv": "^16.4.7",
+    "glob": "^11.0.0",
+    "ioredis": "^5.4.2",
+    "ora": "^8.1.1",
+    "pino": "^9.5.0",
+    "pino-pretty": "^13.0.0"
   },
-  "devDependencies": {}
+  "files": [
+    "src/",
+    "README.md",
+    "LICENSE",
+    "QUICKSTART.md",
+    "MCP_SETUP.md"
+  ]
 }
