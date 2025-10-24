@@ -1,10 +1,7 @@
 # CodeMind 🧠
 
-So I was getting really frustrated with Cursor hitting context restarts. You know that feeling when you're in the middle of a conversation with your AI assistant, asking about your codebase, and suddenly it's like "I don't have access to our previous conversation..." 
-
-Every. Single. Time.
-
-I was tired of re-explaining my entire architecture every session. So I built CodeMind - a Redis-powered MCP server that gives AI assistants permanent memory of your codebase.
+So I was getting hit with Cursor context restarts often. 
+I was tired of re-explaining my entire architecture every session. So I built CodeMind which is a Redis-powered MCP server that gives AI assistants permanent memory of your codebase without clogging the context window.
 
 [![npm version](https://img.shields.io/npm/v/codemind.svg)](https://www.npmjs.com/package/codemind)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -19,16 +16,15 @@ AI: "It calls validateOrder and updateDatabase"
 [Session restarts]
 
 You: "What calls processPayment?"
-AI: "I don't have access to our previous conversation..."
+AI: "Parses the entire codebase and clogs the context window"
 ```
 
 This was driving me insane.
 
 ---
 
-## What I Built
 
-CodeMind indexes your codebase into a Redis graph. Your AI assistant can query it in under 1ms. Forever.
+For solving this, I indexed the codebase into a locally run Redis graph.
 
 ```bash
 # Index once
@@ -42,25 +38,23 @@ codemind-index /path/to/your/project
 → Redis: 0.3ms → Affected: [processPayment, checkout, retryPayment]
 ```
 
-No more re-reading files. No more re-parsing. Just permanent memory.
 
 ---
 
-## What It Does
+## Why would I use this over a hosted memory DB
 
-- ⚡ **Sub-millisecond queries** - Redis graph storage for instant function lookups
+- ⚡ **Sub-millisecond queries** - Locally hosted Redis graph storage for instant function lookups
 - 🔄 **Survives session restarts** - Permanent memory that persists across conversations
 - 📊 **Call graph analysis** - Trace dependencies and find affected functions
 - 🔍 **Incremental indexing** - Only re-index changed files
 - 🎯 **JavaScript/TypeScript support** - Powered by Babel parser
 - 🔌 **MCP integration** - Works with Cursor, Claude Desktop, any MCP client
-- 📈 **Production-grade** - Structured logging, error handling, battle-tested
 
 ---
 
 ## Getting Started
 
-### 1. Install It
+### 1. Install
 
 ```bash
 npm install -g codemind
@@ -120,7 +114,6 @@ Add to `~/.cursor/mcp.json` (or Claude config):
 }
 ```
 
-### Then Just Chat
 
 In Cursor chat:
 
@@ -131,7 +124,7 @@ In Cursor chat:
 "What breaks if I change sendEmail?"
 ```
 
-The AI answers instantly from Redis. Every time. Forever.
+Cursor/Claude Code answers instantly from Redis forever.
 
 ---
 
@@ -215,7 +208,7 @@ MAX_FILE_SIZE_MB=5
 | Trace deps (5 levels) | <10ms | Graph traversal |
 | Find affected | <5ms | Reverse lookup |
 
-**Tested on 20k+ functions. Scales to 100k+.**
+**It can scales upto to 100k+ functions.**
 
 ---
 
@@ -282,23 +275,12 @@ $ npm run stats
 ```
 
 ---
-
-## Why I Built This
+### Codemind 
 
 ### vs. Reading Files Every Time
 - **1000x faster** (Redis vs file I/O + parsing)
 - **Zero context consumed** (no need to load files into AI context)
 - **Permanent** (survives restarts)
-
-### vs. Bigger Context Windows
-- **More efficient** (query graph vs read everything)
-- **More accurate** (structured data vs text search)
-- **Unlimited** (Redis stores any amount)
-
-### vs. Other Code Indexers
-- **MCP native** (works with any AI assistant)
-- **Redis-powered** (battle-tested, scalable)
-- **Sub-millisecond** (in-memory graph queries)
 
 ---
 
@@ -327,55 +309,6 @@ this.parserRegistry.register(new PythonParser());
 
 ---
 
-## Troubleshooting
-
-### Redis Connection Failed
-
-```bash
-# Start Redis
-redis-server
-
-# Check connection
-redis-cli ping  # Should return PONG
-```
-
-### No Functions Found
-
-```bash
-# Re-index with force flag
-codemind-index /path/to/project -f
-```
-
-### MCP Not Working
-
-1. Check `~/.cursor/mcp.json` config
-2. Restart Cursor completely (Cmd+Q)
-3. Verify in Settings → Features → MCP
-
----
-
-## Roadmap
-
-- [ ] Python, Go, Java parsers
-- [ ] Semantic search with embeddings
-- [ ] Class/import tracking
-- [ ] Watch mode (auto re-index on file changes)
-- [ ] Web dashboard
-- [ ] Multi-repo support
-
----
-
-## Contributing
-
-PRs welcome! This thing is built to be extended.
-
-1. Fork the repo
-2. Create a feature branch
-3. Make your changes
-4. Submit a PR
-
----
-
 ## License
 
 MIT © [Rohan Sawai](https://github.com/sawairohan90)
@@ -391,6 +324,4 @@ Built with:
 - [pino](https://getpino.io/) - Logging
 
 ---
-
-**Give your AI permanent code memory. Index once. Query forever. 🧠✨**
 
