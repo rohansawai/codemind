@@ -71,7 +71,7 @@ In Cursor chat, ask:
 
 **First, index a codebase:**
 ```
-Use codemind to index /Users/sawairohan90/redis-learning/test-project
+Use codemind to index /Users/sawairohan90/codemind/test-project
 ```
 
 **Then query it:**
@@ -91,7 +91,7 @@ Use codemind to trace dependencies of "startApp"
 
 ## Example Conversation
 
-**You:** "Use codemind to index /Users/sawairohan90/redis-learning/test-project"
+**You:** "Use codemind to index /Users/sawairohan90/codemind/test-project"
 
 **AI (using index_codebase):**
 ```
@@ -222,7 +222,7 @@ Your code structure (permanent)
 redis-cli ping
 
 # Test server manually
-cd /Users/sawairohan90/redis-learning/codemind
+cd /Users/sawairohan90/codemind/codemind
 node src/mcp/server.js
 # Should show: "MCP Server running on stdio"
 ```
@@ -291,7 +291,7 @@ This is shippable. Right now.
 1. **Restart Cursor** (Cmd+Q)
 2. Wait 5 seconds
 3. Open chat
-4. Say: "Use codemind to index /Users/sawairohan90/redis-learning/test-project"
+4. Say: "Use codemind to index /Users/sawairohan90/codemind/test-project"
 5. Then: "What does startApp do?"
 
 If it works → **YOU JUST GAVE AI PERMANENT CODE MEMORY** 🧠✨

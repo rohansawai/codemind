@@ -27,7 +27,7 @@ Once configured, you can ask your AI assistant:
 
 2. **CodeMind installed**:
    ```bash
-   cd /Users/sawairohan90/redis-learning/codemind
+   cd /Users/sawairohan90/codemind/codemind
    npm install
    ```
 
@@ -48,12 +48,12 @@ Location: `~/.cursor/mcp.json`
       "command": "/Users/sawairohan90/.nvm/versions/node/v20.19.3/bin/node",
       "type": "stdio",
       "name": "codemind",
-      "args": ["/Users/sawairohan90/redis-learning/codemind/src/mcp/server.js"],
+      "args": ["/Users/sawairohan90/codemind/codemind/src/mcp/server.js"],
       "env": {
         "REDIS_URL": "redis://127.0.0.1:6379",
         "LOG_LEVEL": "info"
       },
-      "cwd": "/Users/sawairohan90/redis-learning/codemind"
+      "cwd": "/Users/sawairohan90/codemind/codemind"
     }
   }
 }
@@ -85,13 +85,13 @@ If you see errors, check the troubleshooting section below.
 In Cursor chat, ask:
 
 ```
-Use the codemind MCP server to index /Users/sawairohan90/redis-learning/test-project
+Use the codemind MCP server to index /Users/sawairohan90/codemind/test-project
 ```
 
 Or be more specific:
 
 ```
-Use codemind's index_codebase tool with path: /Users/sawairohan90/redis-learning/test-project
+Use codemind's index_codebase tool with path: /Users/sawairohan90/codemind/test-project
 ```
 
 **Expected response:**
@@ -145,7 +145,7 @@ The AI will automatically use CodeMind tools to answer!
 
 ## Example Conversation
 
-**You:** "Index /Users/sawairohan90/redis-learning/test-project"
+**You:** "Index /Users/sawairohan90/codemind/test-project"
 
 **AI uses:** `index_codebase` tool
 ```
@@ -241,7 +241,7 @@ Check the logs:
 tail -f ~/.cursor/logs/mcp-*.log
 
 # Or run the server manually to see errors
-cd /Users/sawairohan90/redis-learning/codemind
+cd /Users/sawairohan90/codemind/codemind
 node src/mcp/server.js
 ```
 
@@ -299,7 +299,7 @@ tail -f ~/.cursor/logs/mcp-codemind.log
 Before adding to Cursor, test it works:
 
 ```bash
-cd /Users/sawairohan90/redis-learning/codemind
+cd /Users/sawairohan90/codemind/codemind
 
 # Run the MCP server (it reads from stdin, writes to stdout)
 node src/mcp/server.js
@@ -320,7 +320,7 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
   "mcpServers": {
     "codemind": {
       "command": "/Users/sawairohan90/.nvm/versions/node/v20.19.3/bin/node",
-      "args": ["/Users/sawairohan90/redis-learning/codemind/src/mcp/server.js"],
+      "args": ["/Users/sawairohan90/codemind/codemind/src/mcp/server.js"],
       "env": {
         "REDIS_URL": "redis://127.0.0.1:6379"
       }

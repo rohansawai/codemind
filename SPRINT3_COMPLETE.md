@@ -226,7 +226,7 @@ The dashboard shows:
 npm start
 
 # Try each menu option
-1. Index /Users/sawairohan90/redis-learning/test-project
+1. Index /Users/sawairohan90/codemind/test-project
 2. Find "startApp"
 3. Trace "startApp"
 4. Find affected "sendEmail"
