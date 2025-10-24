@@ -1,17 +1,15 @@
 # CodeMind 🧠
 
-> **World's first Redis-powered MCP server for permanent codebase memory**
+So I was getting really frustrated with Cursor hitting context restarts. You know that feeling when you're in the middle of a conversation with your AI assistant, asking about your codebase, and suddenly it's like "I don't have access to our previous conversation..." 
 
-Index once, query forever—across unlimited sessions, context restarts, and conversations. Sub-millisecond graph queries on 100k+ functions.
+Every. Single. Time.
+
+I was tired of re-explaining my entire architecture every session. So I built CodeMind - a Redis-powered MCP server that gives AI assistants permanent memory of your codebase.
 
 [![npm version](https://img.shields.io/npm/v/codemind.svg)](https://www.npmjs.com/package/codemind)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
----
-
-## The Problem
-
-AI assistants forget your codebase every session restart. You re-explain the same architecture. Every. Single. Time.
+## The Problem I Was Solving
 
 ```
 You: "What does processPayment do?"
@@ -24,13 +22,13 @@ You: "What calls processPayment?"
 AI: "I don't have access to our previous conversation..."
 ```
 
-**This is insane.**
+This was driving me insane.
 
 ---
 
-## The Solution
+## What I Built
 
-CodeMind indexes your codebase into a **Redis graph**. AI assistants query it in **<1ms**. Forever.
+CodeMind indexes your codebase into a Redis graph. Your AI assistant can query it in under 1ms. Forever.
 
 ```bash
 # Index once
@@ -44,11 +42,11 @@ codemind-index /path/to/your/project
 → Redis: 0.3ms → Affected: [processPayment, checkout, retryPayment]
 ```
 
-**No re-reading. No re-parsing. Permanent memory.**
+No more re-reading files. No more re-parsing. Just permanent memory.
 
 ---
 
-## Features
+## What It Does
 
 - ⚡ **Sub-millisecond queries** - Redis graph storage for instant function lookups
 - 🔄 **Survives session restarts** - Permanent memory that persists across conversations
@@ -60,9 +58,9 @@ codemind-index /path/to/your/project
 
 ---
 
-## Quick Start
+## Getting Started
 
-### 1. Install
+### 1. Install It
 
 ```bash
 npm install -g codemind
@@ -77,7 +75,7 @@ redis-server
 ### 3. Index Your Code
 
 ```bash
-# Interactive mode
+# Interactive mode (easier)
 codemind
 
 # Or command line
@@ -102,7 +100,7 @@ npm run stats
 
 ---
 
-## MCP Integration (Cursor, Claude Desktop)
+## Using with Cursor/Claude Desktop
 
 ### Setup
 
@@ -122,7 +120,7 @@ Add to `~/.cursor/mcp.json` (or Claude config):
 }
 ```
 
-### Usage
+### Then Just Chat
 
 In Cursor chat:
 
@@ -133,7 +131,7 @@ In Cursor chat:
 "What breaks if I change sendEmail?"
 ```
 
-**The AI answers instantly from Redis. Every time. Forever.**
+The AI answers instantly from Redis. Every time. Forever.
 
 ---
 
@@ -151,7 +149,7 @@ In Cursor chat:
 
 ---
 
-## How It Works
+## How It Actually Works
 
 ```
 Your Code Files
@@ -285,7 +283,7 @@ $ npm run stats
 
 ---
 
-## Why CodeMind?
+## Why I Built This
 
 ### vs. Reading Files Every Time
 - **1000x faster** (Redis vs file I/O + parsing)
@@ -304,9 +302,9 @@ $ npm run stats
 
 ---
 
-## Extending
+## Adding More Languages
 
-### Add Python Support
+Want Python support? Here's how:
 
 ```javascript
 // parsers/python-parser.js
@@ -369,7 +367,7 @@ codemind-index /path/to/project -f
 
 ## Contributing
 
-PRs welcome! CodeMind is built to be extended.
+PRs welcome! This thing is built to be extended.
 
 1. Fork the repo
 2. Create a feature branch
@@ -394,5 +392,5 @@ Built with:
 
 ---
 
-**Give AI permanent code memory. Index once. Query forever. 🧠✨**
+**Give your AI permanent code memory. Index once. Query forever. 🧠✨**
 
