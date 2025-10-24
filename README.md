@@ -1,7 +1,7 @@
 # CodeMind
 
 So I was getting hit with Cursor context restarts often. 
-I was tired of re-explaining my entire architecture every session. So I built CodeMind which is a Redis-powered MCP server that gives AI assistants permanent memory of your codebase without clogging the context window.
+I was tired of re-explaining my entire system architecture after every session restart. So I built CodeMind which is a Redis-powered locally hosted MCP server that gives AI assistants permanent memory of your codebase without clogging the context window.
 
 [![npm version](https://img.shields.io/npm/v/codemind.svg)](https://www.npmjs.com/package/codemind)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
