@@ -1,4 +1,4 @@
-# CodeMind 🧠
+# CodeMind
 
 So I was getting hit with Cursor context restarts often. 
 I was tired of re-explaining my entire architecture every session. So I built CodeMind which is a Redis-powered MCP server that gives AI assistants permanent memory of your codebase without clogging the context window.
