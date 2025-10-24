@@ -7,7 +7,7 @@ Get up and running in 2 minutes.
 ## 1. Install
 
 ```bash
-cd /Users/sawairohan90/redis-learning/codemind
+cd /Users/sawairohan90/codemind/codemind
 npm install
 ```
 

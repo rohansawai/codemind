@@ -20,7 +20,7 @@ Complete guide to testing CodeMind's indexing and query capabilities.
 
 2. **Dependencies installed**:
    ```bash
-   cd /Users/sawairohan90/redis-learning/codemind
+   cd /Users/sawairohan90/codemind/codemind
    npm install
    ```
 

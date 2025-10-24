@@ -54,9 +54,11 @@ program
       
       console.log(chalk.gray(`  ⏱  Duration: ${(results.duration / 1000).toFixed(2)}s`));
       
-      console.log(chalk.bold('\n📈 Database Stats:\n'));
-      console.log(chalk.cyan(`  Total files in DB: ${results.stats.filesIndexed}`));
-      console.log(chalk.cyan(`  Total functions in DB: ${results.stats.functionsIndexed}`));
+      if (results.stats) {
+        console.log(chalk.bold('\n📈 Database Stats:\n'));
+        console.log(chalk.cyan(`  Total files in DB: ${results.stats.filesIndexed}`));
+        console.log(chalk.cyan(`  Total functions in DB: ${results.stats.functionsIndexed}`));
+      }
 
       // Disconnect
       await indexer.disconnect();
